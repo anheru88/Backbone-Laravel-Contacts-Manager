@@ -29,13 +29,14 @@ class ContactsController extends \BaseController {
      */
     public function store()
     {
-        $input = Input::json();
-        Contact::create(array(
-            'first_name' => $input->first_name,
-            'last_name' => $input->last_name,
-            'email_address' => $input->email_address,
-            'description' => $input->description
+        $input = Input::all();
+        return Contact::create(array(
+            'first_name' => $input["first_name"],
+            'last_name' => $input["last_name"],
+            'email_address' => $input["email_address"],
+            'description' => $input["description"]
         ));
+
     }
 
     /**
